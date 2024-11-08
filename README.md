@@ -1,20 +1,36 @@
-# Lung-Cancer-Image-Analysis-using-YOLO-v11-Instance-Segmentation
-This project aims to develop an advanced YOLO v11-Instance-Segmentation model to detect and localize lung cancer tumors or abnormalities in chest X-ray images, based on pre-labeled data provided by Roboflow. The model is trained using the LungCancer dataset, which includes annotated images of lung tumors with precise segmentations for each tumor instance.
+# Gallstone Detection using YOLO v11
+Project Description
+This project aims to develop a YOLO v11 model for accurately detecting the locations of gallstones in gallbladder images. The project is based on the dataset "Gallstone detection by using YOLOV 11 - AMLESH THAKUR" available through Roboflow. The ultralytics library is used to load, train, and analyze images with the model.
+Project Requirements
+Python
+The ultralytics library for YOLO
+A dataset in the specified path
+Core Code
+Loading and Training the Model:
+from ultralytics import YOLO
 
-Overview:
-Model Used: YOLO v11-Instance-Segmentation
-Dataset: The "LungCancer" dataset from Roboflow, containing chest X-ray images with detailed tumor and nodule segmentations.
-Project Goals:
-Improve detection and segmentation accuracy for lung cancer regions.
-Develop an AI-driven system for automatic detection and segmentation, enhancing its use in research and medical applications.
-Training Details:
-Number of Epochs: 10
-Image Size: 640 × 640
-Device: CPU
-Steps:
-Load and train the model using the train() function.
-Test the model on new images to validate its accuracy in detecting and segmenting cancer locations.
-Results and Future Prospects:
-This model can serve as an assistive tool for analyzing X-ray images in cases requiring fast and precise tumor detection and segmentation. It has potential applications in lung cancer research and supports quick, accurate medical diagnoses.
-# Database link
-https://universe.roboflow.com/lung-nodules/lungcancer-f8lej
+# Load the model
+model = YOLO("C://Users//NITRO//Desktop//AI Proj//LungCancer//yolo11n-seg.pt")
+
+# Train the model
+train_results = model.train(
+    data="C://Users//NITRO//Desktop//AI Proj//LungCancer//Gallstone detection by using YOLOV 11 -AMLESH THAKUR-.v1i.yolov11//data.yaml",
+    epochs=10,
+    imgsz=640,
+    device="cpu"
+)
+Making Predictions on New Images:
+python
+نسخ الكود
+# Load the trained model
+model = YOLO('runs//segment//train//weights//best.pt')
+
+# Test the model on a single image
+results = model("C://Users//NITRO//Desktop//AI Proj//LungCancer//Gallstone detection by using YOLOV 11 -AMLESH THAKUR-.v1i.yolov11//test//images//3vesselsbladder_112_jpg.rf.df7b63aaea4988133c947eb798bbdd45.jpg", save=True)
+results[0].show()
+
+# Test the model on a batch of images
+results = model("test_images", save=True)
+Notes:
+Ensure the data.yaml file in the dataset contains the correct paths for images and class names.
+The number of epochs and training configuration can be adjusted as needed for the project.
