@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['Bladder', 'Vessels']
+
+roboflow:
+  workspace: amlesh-thakur-thesis-in-gallstone
+  project: gallstone-detection-by-using-yolov-11-amlesh-thakur
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/amlesh-thakur-thesis-in-gallstone/gallstone-detection-by-using-yolov-11-amlesh-thakur/dataset/1
